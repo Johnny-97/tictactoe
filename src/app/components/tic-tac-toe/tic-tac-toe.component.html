@@ -1,0 +1,28 @@
+<label for="dimensione">Dimensione griglia:</label>
+<select id="dimensione" [formControl]="dimensions" [value]="dimension">
+  <option *ngFor="let value of dimensionSelection" [value]="value">
+    {{ value }}
+  </option>
+</select>
+<br />
+
+<label for="cpu">Gioca contro CPU:</label>
+<input
+  type="checkbox"
+  id="cpu"
+  [formControl]="cpu"
+  [attr.disabled]="isCpuDisabled"
+/>
+<div class="ml-5" *ngIf="!cpu.value">
+    Giocatore attivo:{{ activePlayer | emojify}}
+</div>
+
+<div *ngFor="let row of board; let i = index" class="row">
+  <div *ngFor="let col of row; let j = index" class="col">
+    <app-tic-tac-toe-cell [cell]="col" (click)="updateBoard(i, j)">
+    </app-tic-tac-toe-cell>
+  </div>
+</div>
+{{ message }}
+<br />
+<button (click)="reset()">Reset partita</button>

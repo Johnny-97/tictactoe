@@ -1,0 +1,19 @@
+<div class="card" style="width: 18rem">
+  <img class="card-img-top" [src]="game?.imageSrc" alt="" />
+  <div class="card-body">
+    <p class="card-text text-center">
+        {{game?.title}}
+    </p>
+  <div class="dropdown-divider"></div>
+    <div class="row d-flex">
+        <div *ngFor="let platform of game?.platformIcons">
+            <img [src]="platform" alt="" width="15" />
+        </div>
+    </div>
+    <div class="row" style="width: 18rem">
+        <p class=" card-text text-right">
+            {{game?.releaseDate | date:'MMM yyyy'}}
+        </p>
+    </div>
+  </div>
+</div>

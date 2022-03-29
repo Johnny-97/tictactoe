@@ -1,0 +1,14 @@
+<div class="d-flex justify-center">
+    <h2>Lista dei giochi disponibili:</h2>
+</div>
+
+<ng-container *ngIf="games && games.length; else noGames">
+    <div class="card-group">
+        <div class="mr-3" *ngFor="let game of games">
+            <app-game-card class="p-2" [game]="game"></app-game-card>
+        </div>
+    </div>
+</ng-container>
+<ng-template #noGames>
+    <span>Nessun gioco trovato 🤷</span>
+</ng-template>
